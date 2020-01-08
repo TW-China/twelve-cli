@@ -6,6 +6,11 @@ authors = ["Kilerd <blove694@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "3.8.0"
+black = "^19.10b0"
+fire = "^0.2.1"
+boto3 = "^1.10.48"
+pprint = "^0.1"
+python-dotenv = "^0.10.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.6"
