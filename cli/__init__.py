@@ -19,6 +19,21 @@ class EC2:
         ret = ec2.describe_instances()
         pprint(ret)
 
+    def stop(self, id=None):
+        """stop all instance or specific id for only one instance"""
+        # TODO
+        ec2 = boto3.resource('ec2')
+        instance = ec2.Instance(id)
+        instance.stop()
+
+    def resume(self, id=None):
+        """resume all instance or specific id for only one instance"""
+        # TODO
+        ec2 = boto3.resource('ec2')
+        instance = ec2.Instance(id)
+        instance.start()
+
+
 
 class Commands:
     def __init__(self):
