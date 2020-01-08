@@ -1,0 +1,7 @@
+README.rst
+setup.py
+cli/__init__.py
+cli.egg-info/PKG-INFO
+cli.egg-info/SOURCES.txt
+cli.egg-info/dependency_links.txt
+cli.egg-info/top_level.txt
