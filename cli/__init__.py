@@ -1,9 +1,11 @@
 __version__ = "0.1.0"
+
 import fire
 import boto3
 from pprint import pprint
 from dotenv import load_dotenv
 import os
+from terminaltables import SingleTable
 
 NEEDED_ENVIRONMENT_VARIABLES = [
     "AWS_ACCESS_KEY_ID",
@@ -17,22 +19,42 @@ class EC2:
         """get all ecs instances"""
         ec2 = boto3.client("ec2")
         ret = ec2.describe_instances()
-        pprint(ret)
+        data = [["ID", "Type", "Public IP", "Private IP", "Status"]]
+        for reservation in ret.get("Reservations", []):
+            for instance in reservation.get("Instances", []):
+                data.append(
+                    [
+                        instance.get("InstanceId"),
+                        instance.get("InstanceType"),
+                        instance.get("PublicIpAddress"),
+                        instance.get("PrivateIpAddress"),
+                        instance.get("State", {}).get("Name"),
+                    ]
+                )
+        table = SingleTable(data)
+        print(table.table)
 
-    def stop(self, id=None):
+    def stop(self, id, wait=False):
         """stop all instance or specific id for only one instance"""
-        # TODO
-        ec2 = boto3.resource('ec2')
+        ec2 = boto3.resource("ec2")
         instance = ec2.Instance(id)
         instance.stop()
+        print("stop command is sent")
+        if wait:
+            print(f"waiting instance {id} stop...")
+            instance.wait_until_stopped()
+            print(f"instance {id} stopped")
 
-    def resume(self, id=None):
+    def resume(self, id, wait=False):
         """resume all instance or specific id for only one instance"""
-        # TODO
-        ec2 = boto3.resource('ec2')
+        ec2 = boto3.resource("ec2")
         instance = ec2.Instance(id)
         instance.start()
-
+        print("resume command is sent")
+        if wait:
+            print(f"waiting instance {id} start...")
+            instance.wait_until_running()
+            print(f"instance {id} started")
 
 
 class Commands:

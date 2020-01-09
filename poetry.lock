@@ -278,6 +278,14 @@ version = "1.1.0"
 
 [[package]]
 category = "main"
+description = "Generate simple tables in terminals from a nested list of strings."
+name = "terminaltables"
+optional = false
+python-versions = "*"
+version = "3.1.0"
+
+[[package]]
+category = "main"
 description = "Python Library for Tom's Obvious, Minimal Language"
 name = "toml"
 optional = false
@@ -315,7 +323,7 @@ python-versions = "*"
 version = "0.1.8"
 
 [metadata]
-content-hash = "9a27de12272e39bd46e6aba64477fd9aea4c835abde9c6ab2b2664efa742d159"
+content-hash = "10d42cefebe7beffa9de82b18fe0b587e260b4c4ca5f4ad793bd7b76c1017c1d"
 python-versions = "3.8.0"
 
 [metadata.files]
@@ -435,6 +443,9 @@ six = [
 ]
 termcolor = [
     {file = "termcolor-1.1.0.tar.gz", hash = "sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"},
+]
+terminaltables = [
+    {file = "terminaltables-3.1.0.tar.gz", hash = "sha256:f3eb0eb92e3833972ac36796293ca0906e998dc3be91fbe1f8615b331b853b81"},
 ]
 toml = [
     {file = "toml-0.10.0-py2.7.egg", hash = "sha256:f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"},
