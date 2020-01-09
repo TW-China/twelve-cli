@@ -28,14 +28,16 @@ class AWSClient:
         data = []
         for reservation in ret.get("Reservations", []):
             for instance in reservation.get("Instances", []):
+                named_tag = list(
+                    map(
+                        lambda i: i["Value"],
+                        filter(lambda i: i["Key"] == "Name", instance.get("Tags", {})),
+                    )
+                )
+                name = named_tag[0] if len(named_tag) > 0 else ""
                 i = Instance(
                     instance.get("InstanceId"),
-                    list(
-                        map(
-                            lambda i: i["Value"],
-                            filter(lambda i: i["Key"] == "Name", instance.get("Tags")),
-                        )
-                    )[0],
+                    name,
                     instance.get("InstanceType"),
                     instance.get("PublicIpAddress"),
                     instance.get("PrivateIpAddress"),
