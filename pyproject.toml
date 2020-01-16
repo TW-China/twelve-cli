@@ -5,13 +5,15 @@ description = ""
 authors = ["Kilerd <blove694@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "3.8.0"
+python = "3.7.0"
 black = "^19.10b0"
 fire = "^0.2.1"
 boto3 = "^1.10.48"
 pprint = "^0.1"
 python-dotenv = "^0.10.3"
 terminaltables = "^3.1.0"
+cryptography = "^2.8"
+fabric = "^2.5.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.6"

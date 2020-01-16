@@ -1,7 +1,12 @@
 README.rst
+pyproject.toml
 setup.py
 cli/__init__.py
+cli/aws_client.py
+cli/cluster.py
+cli/ec2.py
 cli.egg-info/PKG-INFO
 cli.egg-info/SOURCES.txt
 cli.egg-info/dependency_links.txt
+cli.egg-info/requires.txt
 cli.egg-info/top_level.txt
